@@ -19,8 +19,15 @@ service 'ntpd' do
 action [:enable, :start]
 end
 
+#node['ipaddress']
+#node['memory']['total']
+
+
 file '/etc/motd' do
-content 'This server is property of dinky butt'
-action :create
+content "This server is property of Finn the Human
+HOSTNAME: #{node['hostname']}
+IPADDRESS: #{node['ipaddress']}
+CPU: #{node['memory']['total']}
+"
 end
 
